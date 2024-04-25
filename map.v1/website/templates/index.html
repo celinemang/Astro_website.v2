@@ -1,97 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="myapp">
+
 <head>
-<meta charset="UTF-8">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galaxy Map</title>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-
-<script src="{{ url_for('static', filename='server.js') }}"></script>
-
-
-
-
-<link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.css" type="text/css">
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
-<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
-
-
-
-
-
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <script src="{{ cdn_js }}"></script>
+    {% block head %}{% endblock %}
 </head>
 
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<body id="body">
 
+<header role="banner">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
 
-
-<body class="bg-dark" >
-  <div class = "content-wrap">
-    <header>
-      <link rel="shortcut icon" href="">
-      <h1 class="text-glow">Galaxy Map</h1>
-      <ul>
-        <li><a href="#">Tools</a></li>
-        <li><a href="#">Setting</a></li>
-        
-      </ul>
-    </header>
-    <div class="container">
-      <section >
-        <!-- Main content -->
-       
-        <iframe src = "http://localhost:5006/plot_script" width = "800" height = "600"></iframe>
-        <div id="map"></div>
-        <div id="bokehPlot">
-          
-
-          <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" id="uploadBtn" name="file" style="display:none;">
-            <label for="uploadBtn" class="upload-label">
-              <i class="fas fa-upload"></i>
-              Upload File
-            </label>
-            <input type="submit" name = "UploadFile" value="Upload File"/>
-          </form>
-          
-         
-       
-          <!-- uploadResult라는 ID를 가진 요소를 만듭니다. -->
-        <div id="uploadResult"></div>
-
-      </div>
-      
-      </section>
-      <aside>
-        <nav>
-          <iframe src = "http://localhost:5006/plot_script" width = "400" height = "300"></iframe>
-        {% if script %}
-        <iframe src="{{ url_for('static', filename='histogram.html') }}" width="800" height="600" frameborder="0"></iframe>
-        {% endif %}
-
-        </nav>
-      </aside>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
+</header>
+
+
+
+{% block content %}
+<div class='container-fluid'>
+    <div class="jumbotron">
+        <h1 class="display-5">Galaxy Map!</h1>
+        <p class="lead">This is a Single Page Application. All the pages that are loaded here are dynamic.</p>
+        <p class="lead">The website gonna be updated regularly. Stay tune to check out new features.</p>
+        <hr class="my-4" style="width:70%;text-align:left;margin-left:0">
+        <h1>Stock Prices</h1>
+        {{ script | safe }}
+        {{ div | safe }}
+        <p></p>
+        <a class="btn btn-primary btn-lg" href="https://github.com/VaibhavModi/Flask_SPA" target="_blank" role="button">Learn more</a>
+    </div>
+    <br/>
+</div>
+{% endblock %}
+
+
+
+
+<!-- <div id="content"></div> -->
+
+    <!--Footer-->
+<!-- Site footer -->
+<footer class="site-footer" id="footer">
     
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by
+                    <a href="https://github.com/celinemang" target="_blank">Celine Mang</a>.
+                </p>
+            </div>
 
-    
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                    <li><a class="linkedin" href="celine.mang@vanderbilt.edu"><i class="fa fa-laptop"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- END footer -->
 
-    <footer class="text-center mt-4">
-      <a href="https://as.vanderbilt.edu/physics-astronomy/"> Vanderbilt University Department of Physics and Astronomy</a>
-      
-    </footer>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src = "skymap_generator.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/style.js"></script>
+<script src="/static/main.js"></script>
 </body>
 </html>
