@@ -7,6 +7,7 @@ from pandas_datareader import data
 from bokeh.plotting import figure, show, output_file
 from bokeh.embed import components
 from bokeh.resources import CDN
+# 
 
 
 app = Flask(__name__)
@@ -25,9 +26,10 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 def home():
     title = 'Home'
-    p = figure(title="Simple line example", x_axis_label='x', y_axis_label='y')
-    p.line([1, 2, 3, 4, 5], [6, 7, 2, 4, 5], legend_label="Temp.", line_width=2)
+    p = figure(title="Simple line example", x_axis_label='x', y_axis_label='y', width=450, height=450)
 
+    p.line([1, 2, 3, 4, 5], [6, 7, 2, 4, 5], legend_label="Temp.", line_width=2)
+    
     # Generate JS and DIV components
     script, div = components(p)
 
