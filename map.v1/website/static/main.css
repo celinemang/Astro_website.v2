@@ -18,8 +18,9 @@ html, body {
   padding-top: 13%;
   padding-bottom: 20%;
   background-position: bottom;
-  margin-bottom: 0 !important;
+  margin-bottom: 30% !important;
   background-size: cover;
+  
 }
 
 .jumbotron p{
@@ -27,7 +28,7 @@ html, body {
 }
 
 .navbar {
-  background-color: #F2EAD8 !important;
+  background-color: #191f3d !important;
   position: relative;
   top: 0;
   width: 100%;
@@ -57,29 +58,31 @@ html, body {
 .navbar .container{
   width: 100%;
   white-space: nowrap;
+  
 }
 
 .container {
   padding: 0;
+  
 }
 
 .container-fluid {
   padding: 0;
+  
 }
-.header{
-}
+
 
 
 .header .container{
-  padding:0;
+  padding: 50px;
 }
 
 
 
 .site-footer
 {
-  background-color:#F2EAD8;
-  padding:45px 0 20px;
+  background-color:#191f3d;
+  padding:50px 0 20px;
   font-size:15px;
   line-height:24px;
   color:#737373;
@@ -222,22 +225,7 @@ html, body {
   width:34px;
   font-size:14px
 }
-.social-icons a.facebook:hover
-{
-  background-color:#3b5998
-}
-.social-icons a.twitter:hover
-{
-  background-color:#00aced
-}
-.social-icons a.linkedin:hover
-{
-  background-color:#007bb6
-}
-.social-icons a.dribbble:hover
-{
-  background-color:#ea4c89
-}
+
 @media (max-width:767px)
 {
   .social-icons li.title
